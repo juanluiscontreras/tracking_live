@@ -1,0 +1,55 @@
+@import 'src/colors';
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.alert-top {
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 50%;
+  justify-content: center;
+}
+
+.info {
+  @include theme-selector('background-color', 'color-green', true);
+  @include theme-selector('color', 'color-white', true);
+}
+
+.error {
+  @include theme-selector('background-color', 'color-red', true);
+  @include theme-selector('color', 'color-white', true);
+}
+
+.warning {
+  @include theme-selector('background-color', 'color-light-blue', true);
+  @include theme-selector('color', 'color-white', true);
+  font-weight: 200;
+}
+
+.warning-option {
+  display: flex;
+  flex-direction: column;
+  span {
+    font-weight: 200;
+    margin-bottom: 15px;
+  }
+}
+
+.alert-bottom {
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 50%;
+  justify-content: center;
+  img {
+    height: 30px;
+  }
+}

@@ -1,0 +1,37 @@
+@import 'src/colors';
+
+$animation-duration: 300ms;
+
+.modal-container {
+  align-items: center;
+  @include theme-selector('background-color', 'color-modal-background', true);
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  opacity: 0;
+  padding: 0 10px;
+  position: fixed;
+  transition: all $animation-duration;
+  visibility: hidden;
+  width: 100%;
+  z-index: 3;
+}
+
+.modal {
+  @include theme-selector('background-color', 'color-white', true);
+  border-radius: 15px;
+  opacity: 0;
+  transform: scale(2);
+  transition: all $animation-duration;
+}
+
+.modal-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  opacity: 1;
+  transform: scale(1);
+}

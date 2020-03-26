@@ -1,0 +1,16 @@
+$themes: ( default: ( color-pinkish-grey:#cccccc, color-light-grey:#e9e9e9, color-green:#63e8a9, color-green-loading: #6ddaa7, color-white:#ffffff, color-red:#FF8672, color-black:#333333, color-modal-background:#00000087, color-orange: #FF6C0E, color-font: #4d4d4d, color-title: #101820, color-pearl: #95E1BF, color-light-blue: #00B2E3, color-header-table: #f7f7f7, color-loader: #ff9e7d, ), dark: ());
+@mixin theme-selector($key, $color, $isModule) {
+    @each $theme-name,
+    $theme-color in $themes {
+        @if $isModule {
+            #{':global'}(.theme-#{$theme-name}) & {
+                #{$key}: map-get(map-get($themes, $theme-name), $color)
+            }
+        }
+        @else {
+            .theme-#{$theme-name} & {
+                #{$key}: map-get(map-get($themes, $theme-name), $color)
+            }
+        }
+    }
+}

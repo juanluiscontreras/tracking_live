@@ -1,0 +1,116 @@
+@import 'src/colors';
+
+$transform-anim: 2000ms;
+$fade-time: 800ms;
+
+.button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Muli, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 15px 0px;
+  position: relative;
+  transition: background-color 200ms ease-in;
+}
+
+
+.button:disabled {
+  @include theme-selector('background-color', 'color-green', true);
+  @include theme-selector('color', 'color-white', true);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.green-button {
+  @include theme-selector('background-color', 'color-green', true);
+  @include theme-selector('color', 'color-white', true);
+}
+
+.button-loading {
+  align-items: center;
+  @include theme-selector('background-color', 'color-green-loading', true);
+  border-radius: inherit;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  transition: clip-path 800ms linear, background-color 600ms linear;
+  width: 100%;
+}
+
+.failure {
+  @include theme-selector('background-color', 'color-red', true);
+}
+
+.success {
+  @include theme-selector('background-color', 'color-green', true);
+}
+
+.transform-anim {
+  animation: transform-anim 1000ms ease-in-out 800ms, transform-anim 800ms linear forwards reverse 1800ms;
+}
+
+.explosion {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: clip-path 800ms ease-in-out;
+  transition-delay: 1800ms;
+  visibility: hidden;
+  width: 100%;
+  svg {
+    height: 25px;
+    position: fixed;
+    @include theme-selector('stroke', 'color-white', true);
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    stroke-width: 4px;
+    transition: stroke-dashoffset 200ms ease-in;
+    transition-delay: 1800ms;
+  }
+  will-change: clip-path;
+  z-index: 5;
+}
+
+.explosion-anim {
+  animation: explosion-anim 2000ms ease-in-out forwards 1800ms;
+  svg {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes transform-anim {
+  0% {
+    clip-path: circle(100%);
+  }
+  50% {
+    clip-path: circle(25px);
+    color: transparent;
+  }
+  100% {
+    clip-path: circle(25px);
+    color: transparent;
+  }
+}
+
+@keyframes explosion-anim {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

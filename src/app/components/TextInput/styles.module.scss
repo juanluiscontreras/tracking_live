@@ -1,0 +1,59 @@
+@import 'src/colors';
+
+.input-container {
+  height: 48px;
+  position: relative;
+  width: 100%;
+  input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    font-family: Muli, sans-serif;
+    font-size: 1.08rem;
+    padding-bottom: 5px;
+    width: 100%;
+    @include theme-selector('border-color', 'color-pinkish-grey', true)
+  }
+  input:focus {
+    outline: none;
+  }
+  .input-error {
+    animation: errorBounce 250ms linear;
+    font-weight: 200;
+    @include theme-selector('border-color', 'color-red', true);
+  }
+  .input-error::placeholder {
+    @include theme-selector('color', 'color-red', true);
+  }
+  svg {
+    height: 20px;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.error-message {
+  font-size: 0.7rem;
+  font-weight: 200;
+  @include theme-selector('color', 'color-red', true);
+}
+
+
+
+@keyframes errorBounce {
+  0% {
+    transform: translateX(5px);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
